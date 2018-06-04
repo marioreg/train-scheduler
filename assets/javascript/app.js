@@ -72,7 +72,7 @@ $("#submit").on("click", function(){
     var minutesAway = moment(nextTrain).format("HH:mm");
 
         
-    $("#add-train > tbody").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + nextTrainMin + "</td><td>" + minutesAway + "</td></tr>");
+    $("#add-train > tbody").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + minutesAway + "</td><td>" + nextTrainMin + "</td></tr>");
 
         
     });
