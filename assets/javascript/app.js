@@ -35,7 +35,7 @@ $("#submit").on("click", function(){
       destination:destination,
       firstTime: firstTime,
       frequency : frequency,
-      dateAdded: firebase.database.ServerValue.TIMESTAMP
+      
   
   
     });
@@ -61,13 +61,21 @@ $("#submit").on("click", function(){
     var name = snapshot.val().trainName;
     var dest = snapshot.val().destination;
     var freq = snapshot.val().frequency;
-    var nextA = "NextArrival";
-    var minutesAway = "MinutesAway";
+    var time = snapshot.val().firstTime;
+
+
+    var startTimeConverted = moment(time, "hh:mm").subtract(1,"years");
+    var timeDiff = moment().diff(moment(startTimeConverted), "minutes");
+    var timeRemainder = timeDiff % freq;
+    var nextTrainMin = freq - timeRemainder;
+    var nextTrain = moment().add(nextTrainMin, "minutes");
+    var minutesAway = moment(nextTrain).format("HH:mm");
+
         
-    
-       $("#add-train > tbody").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + nextA + "</td><td>" + minutesAway + "</td></tr>");
+    $("#add-train > tbody").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td>" + nextTrainMin + "</td><td>" + minutesAway + "</td></tr>");
 
         
     });
 
+    
   }
