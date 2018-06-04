@@ -13,7 +13,7 @@ var database = firebase.database();
 
 
 function displayTime() {
-    var time = moment().format('HH:mm:ss');
+    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
     $('#clock').html(time);
     setTimeout(displayTime, 1000);
 }
