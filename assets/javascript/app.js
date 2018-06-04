@@ -11,6 +11,16 @@ var config = {
   firebase.initializeApp(config);
 var database = firebase.database();
 
+
+function displayTime() {
+    var time = moment().format('HH:mm:ss');
+    $('#clock').html(time);
+    setTimeout(displayTime, 1000);
+}
+
+$(document).ready(function() {
+displayTime();
+
 display();
 
 $("#submit").on("click", function(){
@@ -79,3 +89,5 @@ $("#submit").on("click", function(){
 
     
   }
+
+});
